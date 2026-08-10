@@ -1,0 +1,59 @@
+# ---------------------------------------------------------------------------
+# Alteryx source workflows — NEVER COMMIT
+# ---------------------------------------------------------------------------
+# .yxmd/.yxmc/.yxwz files embed credentials that Alteryx "encrypts" with a
+# reversible, machine-local scheme. In this estate they carry:
+#   * the Sybase ASE ODBC password (user U_ITMONITOR, DSN=SYBASE)
+#   * a SendGrid API key (smtp.sendgrid.net, username "apikey")
+#   * internal topology (\\swap629 shares, bacen.dbo.* table names)
+# Publishing one exposes read access to BMG core-banking data and the ability
+# to send mail as @bancobmg.com.br. Keep them out of version control.
+*.yxmd
+*.yxmc
+*.yxwz
+
+# Alteryx run artefacts / temp
+*.yxdb
+*.rptx
+*.bak
+
+# Outputs of the indicator — audit data, not code
+*.xlsx
+*.xls
+*.csv
+
+# ---------------------------------------------------------------------------
+# Credentials & local config
+# ---------------------------------------------------------------------------
+.databrickscfg
+*.pem
+*.key
+.env
+.env.*
+secrets.yml
+secrets.yaml
+
+# Databricks bundle local state (contains workspace paths / deploy identity)
+.databricks/
+bundle.tf.json
+
+# ---------------------------------------------------------------------------
+# OS / editor noise
+# ---------------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/

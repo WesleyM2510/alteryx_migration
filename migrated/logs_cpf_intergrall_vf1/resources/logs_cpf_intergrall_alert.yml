@@ -1,0 +1,104 @@
+# SQL Alert v2 — e-mail customizado com a contagem de registros do indicador.
+#
+# POR QUE ISTO EXISTE
+# As `email_notifications` do job (ver logs_cpf_intergrall_job.yml) usam um template
+# FIXO: dizem que a execução passou ou falhou, e não há como injetar a contagem no
+# corpo. Este alert resolve isso — o `custom_summary` aceita template mustache, então
+# o número de consultas repetidas entra no assunto/corpo do e-mail.
+#
+# Os dois são complementares e devem coexistir:
+#   * `email_notifications` do job → avisa quando a EXECUÇÃO falha (o pipeline quebrou)
+#   * este alert                   → avisa o RESULTADO do indicador (quantas ocorrências)
+# Um alert nunca dispara se o job falhou antes de gravar, por isso não substitui o
+# on_failure.
+#
+# Databricks envia o e-mail: nenhuma credencial de SMTP, nenhuma API key do SendGrid.
+#
+# ⚠️ Alert v2 (`custom_summary`, `custom_description`, `aggregation`) está em
+#    **Public Preview**. Confirme a disponibilidade no workspace da BMG antes de
+#    depender disto em produção.
+
+resources:
+  alerts:
+    cpf_intergrall_resultado:
+      display_name: "[${bundle.target}] Monitoramento CPF Intergrall — resultado diário"
+      warehouse_id: ${var.warehouse_id}
+      parent_path: ${workspace.file_path}
+
+      # Lê a partição do dia na tabela Gold. `registros` é a coluna avaliada;
+      # as demais entram no corpo via {{QUERY_RESULT_TABLE}}.
+      query_text: |
+        SELECT
+          COUNT(*)                          AS registros,
+          COUNT(DISTINCT log_itgl_usu)      AS usuarios_distintos,
+          COUNT(DISTINCT log_itgl_cpf_cns)  AS cpfs_consultados,
+          MIN(log_itgl_dat)                 AS primeira_ocorrencia,
+          MAX(log_itgl_dat)                 AS ultima_ocorrencia
+        FROM ${var.catalog}.${var.gold_schema}.logs_cpf_intergrall
+        WHERE data_execucao = CURRENT_DATE()
+
+      evaluation:
+        # Dispara quando HÁ ocorrências. A lógica do alert é "notifica quando a
+        # condição é VERDADEIRA", então > 0 é literalmente o que queremos: sem
+        # ocorrências, nada a reportar e ninguém é incomodado.
+        comparison_operator: GREATER_THAN
+        # `aggregation` omitido de propósito: sem ele o comportamento é "First row"
+        # (o schema diz isso explicitamente), e a query já devolve uma linha só.
+        # Os valores aceitos são SUM/COUNT/COUNT_DISTINCT/AVG/MEDIAN/MIN/MAX/STDDEV —
+        # não existe "FIRST".
+        source:
+          name: registros
+          display: registros
+        threshold:
+          value:
+            double_value: 0
+
+        # A query filtra pela partição do dia; se o job não gravou nada, o resultado
+        # vem vazio. OK = trata como "não disparar" em vez de erro, já que "nenhuma
+        # consulta repetida hoje" é um resultado legítimo (o .yxmd tinha o branch
+        # "Sem registro" exatamente para isso).
+        empty_result_state: OK
+
+        notification:
+          notify_on_ok: false
+          # Evita reenvio se a avaliação repetir no mesmo dia.
+          retrigger_seconds: 86400
+          subscriptions:
+            - user_email: ${var.notification_email}
+
+      # Corpo customizado — é isto que o Job email_notifications não consegue fazer.
+      custom_summary: |
+        Monitoramento CPF Intergrall — {{QUERY_RESULT_VALUE}} consulta(s) repetida(s)
+      custom_description: |
+        Prezados,
+
+        O monitoramento contínuo identificou {{QUERY_RESULT_VALUE}} consulta(s)
+        repetida(s) de CPF no sistema Intergrall na execução de hoje.
+
+        Detalhamento da apuração:
+
+        {{QUERY_RESULT_TABLE}}
+
+        A análise é feita de forma manual e exclusiva da equipe de Auditoria Interna
+        para a tomada de decisão.
+
+        O arquivo detalhado do dia está em:
+        ${var.target_volume}/<Ano>/<Mês>/<dd-MM-yyyy>.xlsx
+
+        Indicador: {{ALERT_NAME}}
+        Estado:    {{ALERT_STATE}}
+        Detalhes:  {{ALERT_URL}}
+
+        Atenciosamente,
+        Equipe de Auditoria Contínua.
+
+      # Roda depois do job (job às 06:00; alert às 07:00 dá folga para as 4 tarefas).
+      # Ver README sobre acoplar via task de job em vez de cron, se a folga incomodar.
+      schedule:
+        pause_status: ${var.alert_pause_status}
+        quartz_cron_schedule: ${var.alert_cron}
+        timezone_id: ${var.schedule_timezone}
+
+      permissions:
+        - level: CAN_RUN
+          group_name: users

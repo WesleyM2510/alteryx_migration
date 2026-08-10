@@ -1,0 +1,111 @@
+# Databricks Asset Bundle — Logs CPF Intergrall VF1
+#
+# Substitui o agendamento do Alteryx Designer/Server para o indicador de auditoria
+# contínua migrado de `Logs CPF Intergrall VF1.yxmd`.
+#
+# Deploy:
+#   databricks bundle validate -t dev
+#   databricks bundle deploy   -t dev
+#   databricks bundle run logs_cpf_intergrall -t dev
+#
+# Em `mode: development` o job é prefixado com `[dev <user>]` e o **schedule fica
+# pausado automaticamente** — deploy em dev não dispara execução agendada.
+
+bundle:
+  name: bmg-logs-cpf-intergrall
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Catálogo Unity Catalog do indicador
+    default: bmg_auditoria
+  bronze_schema:
+    description: Schema Bronze (raw)
+    default: bronze
+  silver_schema:
+    description: Schema Silver (cleansed)
+    default: silver
+  gold_schema:
+    description: Schema Gold (indicador)
+    default: gold
+
+  landing_volume:
+    description: Volume de landing (log Sybase + base de RH)
+    default: landing
+  resultado_volume:
+    description: Volume de saída (.xlsx datado)
+    default: resultado
+
+  log_input_path:
+    description: Caminho do log Intergrall já aterrado a partir do Sybase
+    default: /Volumes/bmg_auditoria/bronze/landing/cat099_log_itgl/
+  rh_input_path:
+    description: Base de RH (.xlsx) — abas Ativos e DesligadosConsolidado
+    default: /Volumes/bmg_auditoria/bronze/landing/Base_Funcionarios_Atualizado.xlsx
+  target_volume:
+    description: Raiz do .xlsx datado (Resultado/<Ano>/<Mês>/dd-MM-yyyy.xlsx)
+    default: /Volumes/bmg_auditoria/gold/resultado
+  baseline_path:
+    description: >-
+      .xlsx de saída do Alteryx para validação de paridade. Vazio = validação por
+      profiling + invariantes apenas (risco documentado, ver README).
+    default: ""
+
+  notification_email:
+    description: Destinatário das notificações (substitui o Email tool + AfterError)
+    default: auditoria.continua@bancobmg.com.br
+
+  # A auditoria roda de manhã; o recorte do indicador é ">= ontem".
+  schedule_cron:
+    description: Quartz cron do agendamento diário
+    default: "0 0 6 * * ?"
+  schedule_timezone:
+    default: America/Sao_Paulo
+
+  # SQL Alert — e-mail customizado com a contagem (o job usa template fixo).
+  warehouse_id:
+    description: >-
+      SQL Warehouse que avalia o alert. Troque por `lookup: {warehouse: "<nome>"}`
+      para resolver por nome em vez de ID.
+    default: ""
+  alert_cron:
+    description: >-
+      Cron do alert. 1h depois do job para dar folga às 4 tarefas — ver README
+      sobre acoplar ao job em vez de usar cron.
+    default: "0 0 7 * * ?"
+  alert_pause_status:
+    description: UNPAUSED | PAUSED — o alert não herda a pausa do mode:development
+    default: PAUSED
+
+targets:
+  dev:
+    default: true
+    mode: development
+    # workspace:
+    #   profile: <seu-profile>          # ex.: e2_field_eng
+    variables:
+      catalog: bmg_auditoria_dev
+      # Em dev, aponte para uma cópia reduzida da landing para não ler a base inteira.
+      log_input_path: /Volumes/bmg_auditoria_dev/bronze/landing/cat099_log_itgl/
+      rh_input_path: /Volumes/bmg_auditoria_dev/bronze/landing/Base_Funcionarios_Atualizado.xlsx
+      target_volume: /Volumes/bmg_auditoria_dev/gold/resultado
+      # Notificações de dev vão para quem está desenvolvendo, não para a auditoria.
+      notification_email: ${workspace.current_user.userName}
+      # `mode: development` pausa o SCHEDULE DO JOB automaticamente, mas **não** o do
+      # alert — Alert v2 não tem esse tratamento. Pausado explicitamente aqui para
+      # que um deploy de dev não mande e-mail. Rode manualmente na UI para testar.
+      alert_pause_status: PAUSED
+
+  prod:
+    mode: production
+    # workspace:
+    #   profile: <profile-prod>
+    #   root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    # run_as:
+    #   service_principal_name: <sp-application-id>   # recomendado em prod
+    variables:
+      catalog: bmg_auditoria
+      notification_email: auditoria.continua@bancobmg.com.br
+      alert_pause_status: UNPAUSED

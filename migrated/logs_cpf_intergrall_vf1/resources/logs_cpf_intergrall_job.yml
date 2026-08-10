@@ -1,0 +1,97 @@
+# Job do indicador — 4 tarefas sequenciais (Bronze → Silver → Gold → Validation).
+#
+# A cadeia sequencial reproduz o BlockUntilDone (Tool 20) do Alteryx: nada corre
+# antes da etapa anterior terminar.
+
+resources:
+  jobs:
+    logs_cpf_intergrall:
+      name: "[${bundle.target}] Logs CPF Intergrall — Auditoria Contínua"
+      description: >-
+        Indicador de auditoria contínua sobre consultas repetidas de CPF no sistema
+        Intergrall. Migrado do workflow Alteryx `Logs CPF Intergrall VF1.yxmd`.
+        Ver README.md para o mapeamento de ferramentas e os pontos abertos.
+
+      tags:
+        origem: alteryx
+        workflow_original: Logs_CPF_Intergrall_VF1
+        dominio: auditoria_continua
+        indicador: monitoramento_cpf_intergrall
+
+      # Serverless: nenhum `new_cluster` declarado nas tarefas. `00_config` deteta o
+      # compute e escolhe entre `.cache()` e tabela Delta temporária, então o job
+      # roda igualmente bem em cluster clássico se um for adicionado aqui.
+
+      schedule:
+        quartz_cron_expression: ${var.schedule_cron}
+        timezone_id: ${var.schedule_timezone}
+        # `mode: development` pausa o schedule automaticamente; em prod fica UNPAUSED.
+
+      # Uma execução por vez: as escritas usam replaceWhere na partição do dia,
+      # e duas execuções simultâneas competiriam pela mesma partição.
+      max_concurrent_runs: 1
+
+      # Substitui o Email tool (Tool 1) e o evento AfterError do .yxmd — sem
+      # credencial de SMTP em lugar algum. O anexo não tem equivalente: a
+      # notificação leva o link da execução, e o .xlsx fica no Volume.
+      email_notifications:
+        on_success:
+          - ${var.notification_email}
+        on_failure:
+          - ${var.notification_email}
+
+      # O fluxo original não tinha timeout; um job pendurado deixaria a auditoria
+      # sem indicador e sem aviso. 1h é folgado para um recorte diário.
+      timeout_seconds: 3600
+
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: bronze_schema
+          default: ${var.bronze_schema}
+        - name: silver_schema
+          default: ${var.silver_schema}
+        - name: gold_schema
+          default: ${var.gold_schema}
+        - name: log_input_path
+          default: ${var.log_input_path}
+        - name: rh_input_path
+          default: ${var.rh_input_path}
+        - name: target_volume
+          default: ${var.target_volume}
+        - name: baseline_path
+          default: ${var.baseline_path}
+
+      tasks:
+        - task_key: bronze_ingestion
+          description: Landing → Delta bronze, com metadados de ingestão
+          notebook_task:
+            notebook_path: ../01_bronze_ingestion.py
+
+        - task_key: silver_transformation
+          description: Chave de consulta, deteção de repetidos, recorte, cargos de direção
+          depends_on:
+            - task_key: bronze_ingestion
+          notebook_task:
+            notebook_path: ../02_silver_transformation.py
+
+        - task_key: gold_indicador
+          description: Anti-join → tabela Delta + .xlsx datado no Volume
+          depends_on:
+            - task_key: silver_transformation
+          notebook_task:
+            notebook_path: ../03_gold_aggregation.py
+
+        - task_key: validation
+          description: Profiling + invariantes (comparação com baseline quando disponível)
+          depends_on:
+            - task_key: gold_indicador
+          notebook_task:
+            notebook_path: ../04_validation.py
+
+      queue:
+        enabled: true
+
+      permissions:
+        - level: CAN_VIEW
+          group_name: users

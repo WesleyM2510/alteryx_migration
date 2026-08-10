@@ -1,0 +1,59 @@
+# Schemas e Volumes do Unity Catalog.
+#
+# O catálogo (${var.catalog}) NÃO é criado aqui de propósito: criar catálogo exige
+# privilégio de metastore e normalmente é ação da equipe de governança da BMG.
+# Crie-o antes do primeiro deploy, ou remova estes recursos e aponte as variáveis
+# para schemas já existentes.
+#
+# ATENÇÃO em dev: `mode: development` marca schemas e volumes gerenciados pelo
+# bundle, e `databricks bundle destroy` os **apaga com os dados dentro**. Em prod,
+# se estes objetos já existirem e forem geridos por outro processo, remova este
+# arquivo do bundle para não haver dois donos do mesmo objeto.
+
+resources:
+  schemas:
+    bronze:
+      catalog_name: ${var.catalog}
+      name: ${var.bronze_schema}
+      comment: >-
+        Bronze — dados brutos do indicador Logs CPF Intergrall: log do Sybase ASE
+        (bacen.dbo.cat099_log_itgl) e base de RH (.xlsx).
+
+    silver:
+      catalog_name: ${var.catalog}
+      name: ${var.silver_schema}
+      comment: >-
+        Silver — consultas repetidas de CPF no Intergrall e funcionários em cargos
+        de direção, ambos limpos e conformados.
+
+    gold:
+      catalog_name: ${var.catalog}
+      name: ${var.gold_schema}
+      comment: >-
+        Gold — indicador de auditoria contínua Monitoramento CPF Intergrall.
+
+  volumes:
+    landing:
+      catalog_name: ${var.catalog}
+      schema_name: ${var.bronze_schema}
+      name: ${var.landing_volume}
+      volume_type: MANAGED
+      comment: >-
+        Landing do log Intergrall (ingestão Sybase JDBC) e da base de RH. Substitui
+        o share SMB \\swap629\Auditoria_Continua$.
+
+    resultado:
+      catalog_name: ${var.catalog}
+      schema_name: ${var.gold_schema}
+      name: ${var.resultado_volume}
+      volume_type: MANAGED
+      comment: >-
+        Saída .xlsx datada em Resultado/<Ano>/<Mês>/dd-MM-yyyy.xlsx, reproduzindo a
+        estrutura de pastas do FULLPATCH do Alteryx.
+
+    # Volumes usam `grants`, não `permissions` — formato diferente dos outros recursos.
+    # Descomente e ajuste para o grupo real da auditoria na BMG.
+    # grants:
+    #   - principal: auditoria-continua
+    #     privileges:
+    #       - READ_VOLUME
