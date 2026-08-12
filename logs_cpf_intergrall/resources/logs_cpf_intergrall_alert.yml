@@ -33,8 +33,21 @@ resources:
           COUNT(DISTINCT log_itgl_usu)      AS usuarios_distintos,
           COUNT(DISTINCT log_itgl_cpf_cns)  AS cpfs_consultados,
           MIN(log_itgl_dat)                 AS primeira_ocorrencia,
-          MAX(log_itgl_dat)                 AS ultima_ocorrencia
-        FROM ${var.catalog}.${var.gold_schema}.logs_cpf_intergrall
+          MAX(log_itgl_dat)                 AS ultima_ocorrencia,
+          CONCAT(
+            '${var.target_volume}/',
+            YEAR(CURRENT_DATE()), '/',
+            CASE MONTH(CURRENT_DATE())
+              WHEN 1 THEN 'Janeiro' WHEN 2 THEN 'Fevereiro'
+              WHEN 3 THEN 'Março'   WHEN 4 THEN 'Abril'
+              WHEN 5 THEN 'Maio'    WHEN 6 THEN 'Junho'
+              WHEN 7 THEN 'Julho'   WHEN 8 THEN 'Agosto'
+              WHEN 9 THEN 'Setembro' WHEN 10 THEN 'Outubro'
+              WHEN 11 THEN 'Novembro' WHEN 12 THEN 'Dezembro'
+            END, '/',
+            DATE_FORMAT(CURRENT_DATE(), 'dd-MM-yyyy'), '.xlsx'
+          )                                 AS arquivo_do_dia
+        FROM `${var.catalog}`.${var.gold_schema}.logs_cpf_intergrall
         WHERE to_date(log_itgl_dat, 'dd-MM-yyyy') >= DATE_SUB(CURRENT_DATE(), ${var.dias_export})
 
       evaluation:
@@ -62,7 +75,7 @@ resources:
         notification:
           notify_on_ok: false
           # Evita reenvio se a avaliação repetir no mesmo dia.
-          retrigger_seconds: 86400
+          retrigger_seconds: 60
           subscriptions:
             - user_email: ${var.notification_email}
 
@@ -81,11 +94,8 @@ resources:
         A análise é feita de forma manual e exclusiva da equipe de Auditoria Interna
         para a tomada de decisão.
 
-        O arquivo detalhado do dia está em:
-        ${var.target_volume}/<Ano>/<Mês>/<dd-MM-yyyy>.xlsx
-
         Indicador: {{ALERT_NAME}}
-        Estado:    {{ALERT_STATE}}
+
         Detalhes:  {{ALERT_URL}}
 
         Atenciosamente,
