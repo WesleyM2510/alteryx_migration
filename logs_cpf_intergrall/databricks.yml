@@ -20,42 +20,41 @@ include:
 variables:
   catalog:
     description: Catálogo Unity Catalog do indicador
-    default: bmg_auditoria
+    default: dtlk-sandbox
   bronze_schema:
     description: Schema Bronze (raw)
-    default: bronze
+    default: micracao_alteryx
   silver_schema:
     description: Schema Silver (cleansed)
-    default: silver
+    default: micracao_alteryx
   gold_schema:
     description: Schema Gold (indicador)
-    default: gold
+    default: micracao_alteryx
 
-  landing_volume:
-    description: Volume de landing (log Sybase + base de RH)
-    default: landing
-  resultado_volume:
-    description: Volume de saída (.xlsx datado)
-    default: resultado
-
-  log_input_path:
-    description: Caminho do log Intergrall já aterrado a partir do Sybase
-    default: /Volumes/bmg_auditoria/bronze/landing/cat099_log_itgl/
+  log_input_table:
+    description: Tabela fonte do log Intergrall (leitura direta)
+    default: "`dtlk-sandbox`.micracao_alteryx.cat099_log_itgl"
   rh_input_path:
     description: Base de RH (.xlsx) — abas Ativos e DesligadosConsolidado
-    default: /Volumes/bmg_auditoria/bronze/landing/Base_Funcionarios_Atualizado.xlsx
+    default: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
   target_volume:
     description: Raiz do .xlsx datado (Resultado/<Ano>/<Mês>/dd-MM-yyyy.xlsx)
-    default: /Volumes/bmg_auditoria/gold/resultado
+    default: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files
   baseline_path:
     description: >-
       .xlsx de saída do Alteryx para validação de paridade. Vazio = validação por
       profiling + invariantes apenas (risco documentado, ver README).
     default: ""
+  date_filter:
+    description: >-
+      Controla o escopo temporal do Silver. "recent" = mês corrente apenas
+      (default para execução diária). "full" = todo o histórico (backfill).
+    default: recent
 
   notification_email:
     description: Destinatário das notificações (substitui o Email tool + AfterError)
-    default: auditoria.continua@bancobmg.com.br
+#    default: auditoria.continua@bancobmg.com.br
+    default: wesleymaciel1@live.com
 
   # A auditoria roda de manhã; o recorte do indicador é ">= ontem".
   schedule_cron:
@@ -69,7 +68,7 @@ variables:
     description: >-
       SQL Warehouse que avalia o alert. Troque por `lookup: {warehouse: "<nome>"}`
       para resolver por nome em vez de ID.
-    default: ""
+    default: "529951f1ded20b7c"
   alert_cron:
     description: >-
       Cron do alert. 1h depois do job para dar folga às 4 tarefas — ver README
@@ -86,16 +85,11 @@ targets:
     # workspace:
     #   profile: <seu-profile>          # ex.: e2_field_eng
     variables:
-      catalog: bmg_auditoria_dev
-      # Em dev, aponte para uma cópia reduzida da landing para não ler a base inteira.
-      log_input_path: /Volumes/bmg_auditoria_dev/bronze/landing/cat099_log_itgl/
-      rh_input_path: /Volumes/bmg_auditoria_dev/bronze/landing/Base_Funcionarios_Atualizado.xlsx
-      target_volume: /Volumes/bmg_auditoria_dev/gold/resultado
-      # Notificações de dev vão para quem está desenvolvendo, não para a auditoria.
+      catalog: dtlk-sandbox
+      log_input_table: "`dtlk-sandbox`.micracao_alteryx.cat099_log_itgl"
+      rh_input_path: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
+      target_volume: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files
       notification_email: ${workspace.current_user.userName}
-      # `mode: development` pausa o SCHEDULE DO JOB automaticamente, mas **não** o do
-      # alert — Alert v2 não tem esse tratamento. Pausado explicitamente aqui para
-      # que um deploy de dev não mande e-mail. Rode manualmente na UI para testar.
       alert_pause_status: PAUSED
 
   prod:
@@ -106,6 +100,6 @@ targets:
     # run_as:
     #   service_principal_name: <sp-application-id>   # recomendado em prod
     variables:
-      catalog: bmg_auditoria
+      catalog: dtlk-sandbox
       notification_email: auditoria.continua@bancobmg.com.br
       alert_pause_status: UNPAUSED

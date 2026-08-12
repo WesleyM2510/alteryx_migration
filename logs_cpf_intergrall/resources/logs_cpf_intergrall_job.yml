@@ -53,14 +53,16 @@ resources:
           default: ${var.silver_schema}
         - name: gold_schema
           default: ${var.gold_schema}
-        - name: log_input_path
-          default: ${var.log_input_path}
+        - name: log_input_table
+          default: ${var.log_input_table}
         - name: rh_input_path
           default: ${var.rh_input_path}
         - name: target_volume
           default: ${var.target_volume}
         - name: baseline_path
           default: ${var.baseline_path}
+        - name: date_filter
+          default: ${var.date_filter}
 
       tasks:
         - task_key: bronze_ingestion

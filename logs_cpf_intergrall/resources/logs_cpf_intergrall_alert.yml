@@ -67,8 +67,7 @@ resources:
             - user_email: ${var.notification_email}
 
       # Corpo customizado — é isto que o Job email_notifications não consegue fazer.
-      custom_summary: |
-        Monitoramento CPF Intergrall — {{QUERY_RESULT_VALUE}} consulta(s) repetida(s)
+      custom_summary: "Monitoramento CPF Intergrall — {{QUERY_RESULT_VALUE}} consulta(s) repetida(s)"
       custom_description: |
         Prezados,
 
