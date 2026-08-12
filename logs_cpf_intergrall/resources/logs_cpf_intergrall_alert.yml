@@ -23,7 +23,7 @@ resources:
     cpf_intergrall_resultado:
       display_name: "[${bundle.target}] Monitoramento CPF Intergrall — resultado diário"
       warehouse_id: ${var.warehouse_id}
-      parent_path: ${workspace.file_path}
+      parent_path: /Workspace/Users/p30178@bancobmg.com.br/alteryx_migration-main/migrated/logs_cpf_intergrall_vf1
 
       # Lê a partição do dia na tabela Gold. `registros` é a coluna avaliada;
       # as demais entram no corpo via {{QUERY_RESULT_TABLE}}.
@@ -35,7 +35,7 @@ resources:
           MIN(log_itgl_dat)                 AS primeira_ocorrencia,
           MAX(log_itgl_dat)                 AS ultima_ocorrencia
         FROM ${var.catalog}.${var.gold_schema}.logs_cpf_intergrall
-        WHERE data_execucao = CURRENT_DATE()
+        WHERE to_date(log_itgl_dat, 'dd-MM-yyyy') >= DATE_SUB(CURRENT_DATE(), ${var.dias_export})
 
       evaluation:
         # Dispara quando HÁ ocorrências. A lógica do alert é "notifica quando a

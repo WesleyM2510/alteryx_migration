@@ -56,6 +56,11 @@ variables:
 #    default: auditoria.continua@bancobmg.com.br
     default: wesleymaciel1@live.com
 
+  dias_export:
+    description: >-
+      Janela em dias do export .xlsx (Gold → Volume). Default 1 = apenas ontem.
+    default: "1"
+
   # A auditoria roda de manhã; o recorte do indicador é ">= ontem".
   schedule_cron:
     description: Quartz cron do agendamento diário
@@ -90,6 +95,7 @@ targets:
       rh_input_path: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
       target_volume: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files
       notification_email: ${workspace.current_user.userName}
+      dias_export: "30"
       alert_pause_status: PAUSED
 
   prod:
