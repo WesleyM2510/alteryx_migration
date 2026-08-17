@@ -1,0 +1,936 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.2">
+  <Nodes>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="292" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords>4DD8D0F4FF9BB178E3BCC15621355D19498AFB3E28B4744A1A650CAEC773EE32A6E281443E82B7F1F56845FDF</Passwords>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * 
+from [bacen].[dbo].[cat099_log_itgl] 
+where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) 
+	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))</File>
+          <FormatSpecificOptions>
+            <PreSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <NoProgress>True</NoProgress>
+            <SessionReadOnly>True</SessionReadOnly>
+            <CacheData>False</CacheData>
+            <TableStyle>Quoted</TableStyle>
+            <ReadUncommitted>False</ReadUncommitted>
+            <PostSQL />
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>DSN=SYBASE
+Query=select * 
+from [bacen].[dbo...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="log_itgl_seq" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="Int32" />
+            <Field name="log_itgl_usu" size="20" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_nm" size="255" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_nm_cns" size="255" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_cpf_cns" size="14" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_dat" size="10" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_hor" size="5" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_obs" size="255" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_arq" size="255" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_dat_itg" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="DateTime" />
+            <Field name="log_itgl_usu_itg" size="8" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="V_String" />
+            <Field name="log_itgl_ati" source="File: odbc:DSN=SYBASE;UID=U_ITMONITOR;PWD=__EncPwd1__|||select * &#xA;from [bacen].[dbo].[cat099_log_itgl] &#xA;where Month(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Month(Convert([DATE], GetDate(), 103)) &#xA;	and Year(Convert([DATE], [bacen].[dbo].[cat099_log_itgl].[log_itgl_dat], 103)) = Year(Convert([DATE], GetDate(), 103))" type="Int32" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="35">
+      <GuiSettings Plugin="PortfolioPluginsGui.Email.Email">
+        <Position x="1444" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SMTPServerName>smtp.sendgrid.net</SMTPServerName>
+          <ToIsField value="False" />
+          <To>auditoria.continua@bancobmg.com.br</To>
+          <CcIsField value="False" />
+          <Cc />
+          <BccIsField value="False" />
+          <Bcc />
+          <FromIsField value="False" />
+          <From>auditoria.continua@bancobmg.com.br</From>
+          <SubjectIsField value="True" />
+          <Subject>AssuntoEmail</Subject>
+          <BodyIsField value="False" />
+          <Body>INDICADOR MANUAL!
+
+ 
+
+
+
+Prezados!
+
+
+Nosso sistema de monitoramento continuo identificou ocorrência no indicador de Logs consulta CPF Intergrall.
+
+ 
+
+A análise do mesmo é feita de forma manual e exclusiva da equipe de Auditoria Interna para a tomada de decisão.
+
+ 
+
+
+Atenciosamente,
+
+ 
+
+
+
+Equipe de Auditoria Contínua.</Body>
+          <UserName>apikey</UserName>
+          <Attachments>
+            <Attachment>
+              <ValueIsField value="True" />
+              <Value>FULLPATCH2</Value>
+            </Attachment>
+          </Attachments>
+          <Enabled>False</Enabled>
+          <Password>44F2E5EA0BE241E5504FBB1EC7D9E82DA8FA65752F6C4AB5BF84691522E6CA2A9BEAFCC71404ED9154A7A5C3165D9E3AFCD027F7C421E2477556606391544466AFAF05A821FCDE50925C9EFE33D729A6A3224BC171DD8FDF1963F378A12377A926AB1D3003791DB3A62A3618A6ED1A1D6B3B4470295DC8EC81BDD508130819369AA1ABB2061C95B6464C83236CAD5</Password>
+          <Port>587</Port>
+          <Encryption>Nenhum</Encryption>
+          <SMTPAuth value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxComposerEmail" />
+    </Node>
+    <Node ToolID="37">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1444" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="25">\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado\Logs CPF Intergrall.xlsx|||Logs CPF Intergral</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <PreserveFormat>False</PreserveFormat>
+            <AppendMap>
+              <AppendMapping mode="ByName" />
+            </AppendMap>
+            <SkipFieldNames>False</SkipFieldNames>
+            <OutputOption>Overwrite</OutputOption>
+          </FormatSpecificOptions>
+          <MultiFile value="True" />
+          <MultiFileType>Path</MultiFileType>
+          <MultiFileField>FULLPATCH</MultiFileField>
+          <KeepField value="False" />
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <AnnotationText><![CDATA[Logs CPF Intergrall 28_03_2022.xlsx
+]]></AnnotationText>
+          <DefaultAnnotationText>Logs CPF Intergrall.xlsx
+Query=Logs CPF Intergral</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="38">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="292" y="172" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>Base IGI.XLSX
+Query=`INDEX$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Nome" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="LoginAD" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="CPF" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Matricula" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Email" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Status FA" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Status IGI" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Data de Admissão" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Data de Desligamento" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Cargo" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Departamento" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_WString" />
+            <Field name="Empresa" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Gestor(a)" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Gestor(a) E-mail" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+            <Field name="Gestor Status" size="255" source="File: \\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Base RH Funcionarios\Base IGI.XLSX|||`INDEX$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="39">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="428" y="172" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="TrimLeft(Replace(Replace([CPF], '.', ''),'-',''),'0')" field="CPF_RET" size="1073741823" type="V_WString" />
+            <FormulaField expression="IF (StartsWith([CARGO], 'DIR') or StartsWith([CARGO], 'MEMBRO') or StartsWith([CARGO],'PRES')) THEN '1' ELSE '0' ENDIF" field="CPF_RST" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <AnnotationText><![CDATA[CPF_RET = Replace(Replace([CPF], '.', ''),'-','')
+]]></AnnotationText>
+          <DefaultAnnotationText>CPF_RET = TrimLeft(Replace(Replace([CPF], '.', ''),'-',''),'0')
+CPF_RST = IF (St...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="40">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="644" y="172" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>=</Operator>
+            <Field>CPF_RST</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2022-02-10 17:24:42</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>1</Operand>
+              <StartDate>2022-02-10 17:24:42</StartDate>
+              <EndDate>2022-02-10 17:24:42</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>[CPF_RST] = "1"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="41">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="868" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="log_itgl_nm_cns" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="Nome" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="42">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="964" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="DateTimeNow()" field="System Date" size="1073741823" type="V_WString" />
+            <FormulaField expression="Padleft(Tostring(DatetimeDay([System Date])),2,'0')" field="Dia" size="1073741823" type="V_WString" />
+            <FormulaField expression="Padleft(Tostring(DatetimeMonth([System Date])),2,'0')" field="Mês" size="1073741823" type="V_WString" />
+            <FormulaField expression="DateTimeYear([System Date])" field="Ano" size="1073741823" type="V_WString" />
+            <FormulaField expression="'Monitoramento CPF Intergrall' + [Dia]+'_'+ [Mês]+'_'+[Ano]" field="AssuntoEmail" size="1073741823" type="V_WString" />
+            <FormulaField expression="If Substring([System Date],5,2)='01' Then 'Janeiro'&#xA;ElseIF Substring([System Date],5,2)='02' Then 'Fevereiro'&#xA;ElseIF Substring([System Date],5,2)='03' Then 'Março'&#xA;ElseIF Substring([System Date],5,2)='04' Then 'Abril'&#xA;ElseIF Substring([System Date],5,2)='05' Then 'Maio'&#xA;ElseIF Substring([System Date],5,2)='06' Then 'Junho'&#xA;ElseIF Substring([System Date],5,2)='07' Then 'Julho'&#xA;ElseIF Substring([System Date],5,2)='08' Then 'Agosto'&#xA;ElseIF Substring([System Date],5,2)='09' Then 'Setembro'&#xA;ElseIF Substring([System Date],5,2)='10' Then 'Outubro'&#xA;ElseIF Substring([System Date],5,2)='11' Then 'Novembro'&#xA;ElseIF Substring([System Date],5,2)='12' Then 'Dezembro'&#xA;Else '' endif" field="Folder Month" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado&quot;  +'\'+[Ano]+'\'+[Folder Month]+'\'+ [Dia]+'-'+[Mês]+'-'+[Ano]+'.xlsx|||Monitoramento CPF Intergrall'" field="FULLPATCH" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado&quot; +'\'+[Ano]+'\'+[Folder Month]+'\'+ [Dia]+'-'+[Mês]+'-'+[Ano]+'.xlsx'" field="FULLPATCH2" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>System Date = DateTimeNow()
+Dia = Padleft(Tostring(DatetimeDay([System Date])),2...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="43">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BlockUntilDone.BlockUntilDone">
+        <Position x="1252" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBlockUntilDone" />
+    </Node>
+    <Node ToolID="44">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1156" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="log_itgl_seq" selected="True" type="Int64" size="8" />
+            <SelectField field="Data convertida" selected="False" />
+            <SelectField field="Matricula" selected="False" />
+            <SelectField field="Status FA" selected="False" />
+            <SelectField field="Data de Admissão" selected="False" />
+            <SelectField field="Data de Desligamento" selected="False" />
+            <SelectField field="Empresa" selected="False" />
+            <SelectField field="Gestor(a) E-mail" selected="False" />
+            <SelectField field="Gestor Status" selected="False" />
+            <SelectField field="System Date" selected="False" />
+            <SelectField field="Dia" selected="False" />
+            <SelectField field="Mês" selected="False" />
+            <SelectField field="Ano" selected="False" />
+            <SelectField field="Folder Month" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="45">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1348" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False">
+            <Field name="AssuntoEmail" />
+            <Field name="FULLPATCH2" />
+          </GroupingFields>
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="log_itgl_seq" selected="True" Alignment="Right" />
+            <Field name="log_itgl_usu" selected="True" Alignment="Right" />
+            <Field name="log_itgl_nm" selected="True" Alignment="Right" />
+            <Field name="log_itgl_nm_cns" selected="True" Alignment="Right" />
+            <Field name="log_itgl_cpf_cns" selected="True" Alignment="Right" />
+            <Field name="log_itgl_dat" selected="True" Alignment="Right" />
+            <Field name="log_itgl_hor" selected="True" Alignment="Right" />
+            <Field name="log_itgl_obs" selected="True" Alignment="Right" />
+            <Field name="log_itgl_arq" selected="True" Alignment="Right" />
+            <Field name="log_itgl_dat_itg" selected="True" Alignment="Right" />
+            <Field name="log_itgl_usu_itg" selected="True" Alignment="Right" />
+            <Field name="log_itgl_ati" selected="True" Alignment="Right" />
+            <Field name="Chave cons." selected="True" Alignment="Right" />
+            <Field name="AssuntoEmail" selected="True" Alignment="Right" />
+            <Field name="FULLPATCH" selected="True" Alignment="Right" />
+            <Field name="FULLPATCH2" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules />
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>Tabela básica</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="46">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="580" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="REGEX_replace([log_itgl_dat],'/','-')" field="log_itgl_dat" size="10" type="V_String" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <AnnotationText><![CDATA[log_itgl_dat = REGEX_replace([log_itgl_dat],'/','-')
+]]></AnnotationText>
+          <DefaultAnnotationText><![CDATA[log_itgl_dat = REGEX_replace([log_itgl_dat],'/','-')
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="47">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DateTime.DateTime">
+        <Position x="388" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <IsFrom value="False" />
+          <InputFieldName>log_itgl_dat</InputFieldName>
+          <Language>Portuguese</Language>
+          <Format>dd/MM/yyyy</Format>
+          <OutputFieldName>Data convertida</OutputFieldName>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>Converter log_itgl_dat De:
+dd/MM/yyyy</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDateTime" />
+    </Node>
+    <Node ToolID="48">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="676" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>&gt;=</Operator>
+            <Field>Data convertida</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>yesterday</DateType>
+              <PeriodDate>2023-02-07 13:24:40</PeriodDate>
+              <PeriodType>days</PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>2023-02-07</Operand>
+              <StartDate>2023-02-07 13:24:40</StartDate>
+              <EndDate>2023-02-07 13:24:40</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>[Data convertida] &gt;= ToDate(DateTimeAdd(DateTimeToday(), -1, "days"))</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="49">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="1540" y="220" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="DateTimeNow()" field="System Date" size="1073741823" type="V_WString" />
+            <FormulaField expression="Padleft(Tostring(DatetimeDay([System Date])),2,'0')" field="Dia" size="1073741823" type="V_WString" />
+            <FormulaField expression="Padleft(Tostring(DatetimeMonth([System Date])),2,'0')" field="Mês" size="1073741823" type="V_WString" />
+            <FormulaField expression="DateTimeYear([System Date])" field="Ano" size="1073741823" type="V_WString" />
+            <FormulaField expression="'Monitoramento CPF Intergrall' + [Dia]+'_'+ [Mês]+'_'+[Ano]" field="AssuntoEmail" size="1073741823" type="V_WString" />
+            <FormulaField expression="If Substring([System Date],5,2)='01' Then 'Janeiro'&#xA;ElseIF Substring([System Date],5,2)='02' Then 'Fevereiro'&#xA;ElseIF Substring([System Date],5,2)='03' Then 'Março'&#xA;ElseIF Substring([System Date],5,2)='04' Then 'Abril'&#xA;ElseIF Substring([System Date],5,2)='05' Then 'Maio'&#xA;ElseIF Substring([System Date],5,2)='06' Then 'Junho'&#xA;ElseIF Substring([System Date],5,2)='07' Then 'Julho'&#xA;ElseIF Substring([System Date],5,2)='08' Then 'Agosto'&#xA;ElseIF Substring([System Date],5,2)='09' Then 'Setembro'&#xA;ElseIF Substring([System Date],5,2)='10' Then 'Outubro'&#xA;ElseIF Substring([System Date],5,2)='11' Then 'Novembro'&#xA;ElseIF Substring([System Date],5,2)='12' Then 'Dezembro'&#xA;Else '' endif" field="Folder Month" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado&quot;  +'\'+[Ano]+'\'+[Folder Month]+'\'+ [Dia]+'-'+[Mês]+'-'+[Ano]+'.xlsx|||Monitoramento CPF Intergrall'" field="FULLPATCH" size="1073741823" type="V_WString" />
+            <FormulaField expression="&quot;\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado&quot; +'\'+[Ano]+'\'+[Folder Month]+'\'+ [Dia]+'-'+[Mês]+'-'+[Ano]+'.xlsx'" field="FULLPATCH2" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>System Date = DateTimeNow()
+Dia = Padleft(Tostring(DatetimeDay([System Date])),2...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="50">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="1204" y="252" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="1" />
+          <Fields>
+            <Field name="LOG" />
+          </Fields>
+          <Data>
+            <r>
+              <c>Sem registro</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="51">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
+        <Position x="1348" y="268" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CartesianMode>Allow</CartesianMode>
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
+    </Node>
+    <Node ToolID="52">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1636" y="220" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsEmpty</Operator>
+            <Field>log_itgl_usu</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2023-07-26 09:24:07</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>
+              </Operand>
+              <StartDate>2023-07-26 09:24:07</StartDate>
+              <EndDate>2023-07-26 09:24:07</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>IsEmpty([log_itgl_usu])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="53">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1444" y="220" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="54">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1348" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="AssuntoEmail" selected="False" />
+            <SelectField field="FULLPATCH2" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="55">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1732" y="204" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="FULLPATCH2" selected="False" />
+            <SelectField field="System Date" selected="False" />
+            <SelectField field="Dia" selected="False" />
+            <SelectField field="Mês" selected="False" />
+            <SelectField field="Ano" selected="False" />
+            <SelectField field="Folder Month" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="56">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1828" y="204" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="25">\\swap629\Auditoria_Continua$\AUDITORIA DE TECNOLOGIA\AUDITORIA CONTINUA\Gerencial\Gestão dos Indicadores\2020\Monitoramento CPF Intergrall\Resultado\Logs CPF Intergrall.xlsx|||Logs CPF Intergral</File>
+          <Passwords />
+          <FormatSpecificOptions>
+            <PreserveFormat>False</PreserveFormat>
+            <AppendMap>
+              <AppendMapping mode="ByName" />
+            </AppendMap>
+            <SkipFieldNames>False</SkipFieldNames>
+            <OutputOption>Overwrite</OutputOption>
+          </FormatSpecificOptions>
+          <MultiFile value="True" />
+          <MultiFileType>Path</MultiFileType>
+          <MultiFileField>FULLPATCH</MultiFileField>
+          <KeepField value="False" />
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <AnnotationText><![CDATA[Logs CPF Intergrall 28_03_2022.xlsx
+]]></AnnotationText>
+          <DefaultAnnotationText>Logs CPF Intergrall.xlsx
+Query=Logs CPF Intergral</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="57">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="1060" y="148" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>!=</Operator>
+            <Field>Status IGI</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2024-09-26 10:18:29</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <Operand>DESLIGADO COMPLETAMENTE</Operand>
+              <StartDate>2024-09-26 10:18:29</StartDate>
+              <EndDate>2024-09-26 10:18:29</EndDate>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="2">
+          <Name />
+          <DefaultAnnotationText>[Status IGI] != "DESLIGADO COMPLETAMENTE"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="58">
+      <GuiSettings>
+        <Position x="484" y="76" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">False</Value>
+          <Value name="Check Box (136)">False</Value>
+          <Value name="List Box (11)">"log_itgl_nm_cns"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">True</Value>
+          <Value name="Check Box (70)">True</Value>
+          <Value name="Check Box (77)">True</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="59">
+      <GuiSettings>
+        <Position x="508" y="172" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">False</Value>
+          <Value name="Check Box (136)">False</Value>
+          <Value name="List Box (11)">"Nome"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">True</Value>
+          <Value name="Check Box (70)">True</Value>
+          <Value name="Check Box (77)">True</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="47" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="38" Connection="Output" />
+      <Destination ToolID="39" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Output" />
+      <Destination ToolID="59" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="40" Connection="True" />
+      <Destination ToolID="41" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="48" Connection="True" />
+      <Destination ToolID="41" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="41" Connection="Join" />
+      <Destination ToolID="42" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="42" Connection="Output" />
+      <Destination ToolID="57" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="Output2" />
+      <Destination ToolID="45" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="Output3" />
+      <Destination ToolID="51" Connection="Source" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="50" Connection="Output" />
+      <Destination ToolID="51" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="43" Connection="Output" />
+      <Destination ToolID="54" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="44" Connection="Output" />
+      <Destination ToolID="43" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="45" Connection="Output" />
+      <Destination ToolID="35" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="46" Connection="Output" />
+      <Destination ToolID="48" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="47" Connection="Output" />
+      <Destination ToolID="58" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="49" Connection="Output" />
+      <Destination ToolID="52" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="51" Connection="Output" />
+      <Destination ToolID="53" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="52" Connection="True" />
+      <Destination ToolID="55" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="53" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="54" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="55" Connection="Output" />
+      <Destination ToolID="56" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="57" Connection="True" />
+      <Destination ToolID="44" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="58" Connection="Output26" />
+      <Destination ToolID="46" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="59" Connection="Output26" />
+      <Destination ToolID="40" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Logs CPF Intergrall VF1</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="d6651f2e-e0b1-4e7e-9238-2beb6def0876" />
+      <Telemetry>
+        <PreviousWorkflowId value="" />
+        <OriginWorkflowId value="d6651f2e-e0b1-4e7e-9238-2beb6def0876" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="False" />
+      <Event>
+        <Description>Após execução com erros: E-mail para auditoria.continua@bancobmg.com.br</Description>
+        <When>AfterError</When>
+        <SendMail value="True" />
+        <email_SMTPServer>smtp.sendgrid.net</email_SMTPServer>
+        <email_Encryption>STARTTLS</email_Encryption>
+        <email_Port>587</email_Port>
+        <email_Authentication value="True" />
+        <email_Username>apikey</email_Username>
+        <email_Password>44F2E5EA0BE241E5504FBB1EC7D9E82DA8FA65752F6C4AB5BF84691522E6CA2A9BEAFCC71404ED9154A7A5C3165D9E3AFCD027F7C421E2477556606391544466AFAF05A821FCDE50925C9EFE33D729A6A3224BC171DD8FDF1963F378A12377A926AB1D3003791DB3A62A3618A6ED1A1D6B3B4470295DC8EC81BDD508130819369AA1ABB2061C95B6464C83236CAD5</email_Password>
+        <email_From>auditoria.continua@bancobmg.com.br</email_From>
+        <email_To>auditoria.continua@bancobmg.com.br</email_To>
+        <email_Subject>ERRO NA EXECUÇÃO: LOGS INTERGRALL</email_Subject>
+        <email_Body>Prezados,
+
+Ocorreu um erro na execução do indicador: 
+
+LOGS INTERGRALL
+
+Favor verificar e corrigir.
+
+Atenciosamente.</email_Body>
+        <email_Attachments />
+      </Event>
+    </Events>
+  </Properties>
+</AlteryxDocument>
