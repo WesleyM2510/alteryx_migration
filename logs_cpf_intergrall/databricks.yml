@@ -33,7 +33,7 @@ variables:
 
   log_input_table:
     description: Tabela fonte do log Intergrall (leitura direta)
-    default: "`dtlk-sandbox`.micracao_alteryx.cat099_log_itgl"
+    default: "datalake.raw_tecnologia_governanca_de_ti.bacen_cat099_log_itgl"
   rh_input_path:
     description: Base de RH (.xlsx) — abas Ativos e DesligadosConsolidado
     default: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
@@ -91,10 +91,11 @@ targets:
     #   profile: <seu-profile>          # ex.: e2_field_eng
     variables:
       catalog: dtlk-sandbox
-      log_input_table: "`dtlk-sandbox`.micracao_alteryx.cat099_log_itgl"
+      log_input_table: "datalake.raw_tecnologia_governanca_de_ti.bacen_cat099_log_itgl"
       rh_input_path: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
       target_volume: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files
       notification_email: ${workspace.current_user.userName}
+      date_filter: full
       dias_export: "30"
       alert_pause_status: PAUSED
 
