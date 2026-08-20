@@ -101,7 +101,7 @@ targets:
       notification_email: ${workspace.current_user.userName}
       start_date: ""
       end_date: ""
-      dias_export: "30"
+      dias_export: "1"
       alert_pause_status: PAUSED
 
   prod:
