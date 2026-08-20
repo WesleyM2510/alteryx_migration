@@ -61,8 +61,10 @@ resources:
           default: ${var.target_volume}
         - name: baseline_path
           default: ${var.baseline_path}
-        - name: date_filter
-          default: ${var.date_filter}
+        - name: start_date
+          default: ${var.start_date}
+        - name: end_date
+          default: ${var.end_date}
         - name: dias_export
           default: ${var.dias_export}
 

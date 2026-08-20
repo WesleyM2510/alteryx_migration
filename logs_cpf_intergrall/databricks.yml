@@ -45,16 +45,20 @@ variables:
       .xlsx de saída do Alteryx para validação de paridade. Vazio = validação por
       profiling + invariantes apenas (risco documentado, ver README).
     default: ""
-  date_filter:
+  start_date:
     description: >-
-      Controla o escopo temporal do Silver. "recent" = mês corrente apenas
-      (default para execução diária). "full" = todo o histórico (backfill).
-    default: recent
+      Data início do recorte (YYYY-MM-DD). Vazio = ontem
+      (calculado pelo notebook quando o job não sobrescrever).
+    default: ""
+  end_date:
+    description: >-
+      Data fim do recorte (YYYY-MM-DD). Vazio = hoje
+      (calculado pelo notebook quando o job não sobrescrever).
+    default: ""
 
   notification_email:
     description: Destinatário das notificações (substitui o Email tool + AfterError)
-#    default: auditoria.continua@bancobmg.com.br
-    default: wesleymaciel1@live.com
+    default: auditoria.continua@bancobmg.com.br
 
   dias_export:
     description: >-
@@ -95,7 +99,8 @@ targets:
       rh_input_path: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files/Base IGI RH.XLSX
       target_volume: /Volumes/dtlk-sandbox/micracao_alteryx/excel_files
       notification_email: ${workspace.current_user.userName}
-      date_filter: full
+      start_date: ""
+      end_date: ""
       dias_export: "30"
       alert_pause_status: PAUSED
 
